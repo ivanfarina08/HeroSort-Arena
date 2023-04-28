@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>(RDM)11</title>
+
+    <style>
+        .itemlist, #addText, #addButton{
+            border-radius: 10px;
+            padding: 15px;
+        }
+        .itemlist{
+            box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+            margin: 5px;
+        }
+        #addButton{
+            background-color: white;
+        }
+        #addButton:hover{
+            background-color: black;
+            color: white;
+        }
+        #mainContainer{
+            display: flex;
+            justify-content: center;
+            margin: 15px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div id="mainContainer">
+        <div id="inputContainer">
+            <input type="text" name="addText" id="addText">
+            <input type="button" name="btAdd" id="addButton" onclick="addButton()" value="Click me">
+            <div id="listContainer"></div>
+        </div>
+    </div>
+</body>
+</html>
+
+
+<script>
+    let list = new Array();
+    function addButton(){
+        let input = document.getElementById("addText");
+        let text = input.value;
+        if(text.length > 0 && text != ' '){
+            list.push(text);
+            list.sort((a,b)=>{
+                return a.length - b.length
+            });
+            document.getElementById("listContainer").innerHTML = "<p class="+"itemlist"+">" + list.join("<p class="+"itemlist"+">") + "</p>";
+        }
+        input.value = null;
+    }
+</script>
